@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Catalogue</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="status.html" class="statusBtn">📊</a>
+
+<h1>Choose Your Plan</h1>
+
+<div class="catalogue">
+
+  <div class="card" onclick="selectPlan(100)">
+    <h2>100<br>Followers<br>₹29</h2>
+  </div>
+
+  <div class="card" onclick="selectPlan(200)">
+    <h2>200<br>Followers<br>₹49</h2>
+  </div>
+
+  <div class="card" onclick="selectPlan(500)">
+    <h2>500<br>Followers<br>₹99</h2>
+  </div>
+
+  <div class="card" onclick="selectPlan(1000)">
+    <h2>1000<br>Followers<br>₹199</h2>
+  </div>
+
+  <div class="card" onclick="selectPlan(1500)">
+    <h2>1500<br>Followers<br>₹289</h2>
+  </div>
+
+  <div class="card" onclick="selectPlan(2000)">
+    <h2>2000<br>Followers<br>₹379</h2>
+  </div>
+
+</div>
+
+<div class="custom">
+  <h2>How Much Followers Do You Want(Custom):</h2>
+  <input type="number" id="customAmount">
+  <button onclick="customPlan()">Proceed</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

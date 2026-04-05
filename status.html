@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order Status</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Check Order Status</h1>
+
+<a href="index.html" class="backIcon">⬅</a>
+
+<input type="text" id="searchUser" placeholder="Enter Username">
+<button onclick="checkStatus()">Check</button>
+
+<p style="opacity:0.7;">Check your order anytime</p>
+
+<div id="results"></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBsAbJal0g6VBk6GmIR8K3eJpXvCAfDsiE",
+  authDomain: "flw4flw-48621.firebaseapp.com",
+  projectId: "flw4flw-48621",
+  storageBucket: "flw4flw-48621.firebasestorage.app",
+  messagingSenderId: "691545515899",
+  appId: "1:691545515899:web:8d3ce98b2d567da15dbfde"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.checkStatus = async function() {
+  let username = document.getElementById("searchUser").value;
+
+  if (!username) {
+    alert("Enter username");
+    return;
+  }
+
+  let querySnapshot = await getDocs(collection(db, "orders"));
+
+  let output = "";
+
+  querySnapshot.forEach((doc) => {
+    let data = doc.data();
+
+    if (data.username === username) {
+      output += `
+        <div style="margin:10px; padding:10px; border:1px solid white;">
+          <p>Followers Ordered: ${data.amount}</p>
+          <p>Date: ${new Date(data.time.seconds * 1000).toLocaleString()}</p>
+          <p style="
+            color: ${
+              data.status === 'completed' ? 'lime' :
+              data.status === 'processing' ? 'yellow' :
+              'red'
+            };
+            font-weight: bold;
+          ">
+            Status: ${data.status.charAt(0).toUpperCase() + data.status.slice(1)}
+          </p>
+        </div>
+      `;
+    }
+  });
+
+  if (output === "") {
+    output = "<p>No orders found</p>";
+  }
+
+  document.getElementById("results").innerHTML = output;
+};
+</script>
+
+</body>
+</html>
