@@ -110,3 +110,8 @@ input, button {
   width: 90%;
   max-width: 400px;
 }
+
+.catalogue {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
