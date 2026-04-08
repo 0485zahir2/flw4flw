@@ -100,3 +100,13 @@ button:hover {
   text-decoration: none;
   color: cyan;
 }
+
+/* Added on 09-04-2026 */
+body {
+  padding: 10px;
+}
+
+input, button {
+  width: 90%;
+  max-width: 400px;
+}
