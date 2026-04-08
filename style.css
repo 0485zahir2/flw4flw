@@ -115,3 +115,33 @@ input, button {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
 }
+
+.statusBtn {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 1000;
+}
+
+.backIcon {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1000;
+}
+
+body {
+  padding-top: 60px;
+}
+
+@media (max-width: 600px) {
+  .statusBtn, .backIcon {
+    top: 10px;
+    font-size: 16px;
+    padding: 8px;
+  }
+
+  h1 {
+    margin-top: 20px;
+  }
+}
